@@ -1,0 +1,135 @@
+/*
+ * p7.c
+ *
+ *  Created on: 09-Sep-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#define max 4
+int pQ1[max] , pQ2[max];
+int f1 = 0 , f2 = 0 , r1 = 0 , r2 = 0 ;
+
+void enqueue();
+void print();
+void dequeue();
+
+int main(){
+	int choice;
+		do{
+			printf("\nPress 1: enqueue\nPress 2: dequeue\nPress 3 : traversal\nPress 0 : Exit\n");
+			scanf("%d",&choice);
+			switch(choice){
+			case 1:
+				enqueue();
+				break;
+			case 2:
+				dequeue();
+				break;
+			case 3:
+				print();
+				break;
+			case 0:
+				return -1;
+			}
+
+		}while(1);
+		return 0;
+	return 0;
+}
+
+void enqueue()
+{
+	int choice = 0, value = 0;
+	printf("Press 1 : First Priority\nPress 2 : Second Priority\n");
+	printf("Enter Choice : ");
+	scanf("%d",&choice);
+	switch(choice){
+	case 1:
+		int value;
+			if(r1==max)
+			{
+				printf("Queue will be overflowed\n");
+		       return ;
+			}
+			printf("Enter the value\n");
+			scanf("%d",&value);
+			r1++;
+			pQ1[r1]=value;
+			if(r1==1)
+			{
+				f1=1;
+			}
+			break;
+	case 2:
+
+			int value;
+				if(r2==max)
+				{
+					printf("Queue will be overflowed\n");
+			       return ;
+				}
+				printf("Enter the value\n");
+				scanf("%d",&value);
+				r2++;
+				pQ1[r2]=value;
+				if(r2==1)
+				{
+					f2=1;
+				}		break;
+	default:
+	printf("Enter valid choice...\n");
+	}
+	return;
+}
+
+void dequeue()
+{
+	if(f1 == 0 && f2 == 0)
+	{
+				printf("Both Queues are  Empty !!!");
+				return;
+	}
+	else if(f1!=0)
+	{
+		printf("Element deleted:%d",pQ1[f1]);
+		if(f1==r1)
+		{
+			f1=0;
+			r1=0;
+		}
+		else
+		{
+			f1=f1+1;
+		}
+	}
+	else
+	{
+		printf("Element deleted:%d",pQ2[f2]);
+		if(f2==r2)
+			{
+				f2=0;
+				r2=0;
+			}
+			else
+			{
+				f2=f2+1;
+			}
+	}
+}
+
+void print(){
+	printf("Q1:\n");
+	for(int i = 0 ; i <= max - 1 ; i++){
+		printf("%d ",pQ1[i]);
+	}
+	printf("\n");
+
+	printf("Q2:\n");
+	for(int i = 0 ; i <= max - 1 ; i++){
+		printf("%d ",pQ2[i]);
+	}
+	printf("\n");
+	return;
+
+}
+

@@ -1,0 +1,106 @@
+/*
+ * p5.c
+ *
+ *  Created on: 06-Sep-2024
+ *      Author: root
+ */
+/*
+ * P5.cpp
+ *
+ *  Created on: 23-Aug-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+
+#define max 5
+
+int queue[max];
+int *r = NULL, *f = NULL;
+
+void enqueue();
+void dequeue();
+void traversal();
+
+
+int main(){
+    r = (int*)calloc(1,sizeof(int));
+    f = (int*)calloc(1,sizeof(int));
+    // Added error checking for memory allocation
+    if(r == NULL || f == NULL){
+        printf("Memory allocation failed\n");
+        return -1;
+    }
+    *f = 0 , *r = 0;
+    int choice;
+    do{
+        printf("\n\nPress 1: enqueue\nPress 2: dequeue\nPress 3 : traversal\nPress 0 : Exit\n");
+        scanf("%d",&choice);
+        switch(choice){
+        case 1:
+            enqueue();
+            break;
+        case 2:
+            dequeue();
+            break;
+        case 3:
+            traversal();
+            break;
+
+        case 0:
+           printf("Code exited");
+            return 0;
+        default:
+            printf("Enter Valid input...\n\n");
+            break;
+        }
+    }while(1);
+    return 0;
+}
+
+void enqueue(){
+    if(*r == max){
+        printf("Queue is full..\n");
+        return;
+    }
+    *r=*r+1;
+    printf("Enter Value : ");
+    scanf("%d",&queue[*r]);
+    if(*r==1)
+    {
+        *f=1;
+    }
+    return;
+}
+
+void dequeue(){
+    if(*f == 0){
+        printf("Queue is empty...\n");
+        return ;
+    }
+    printf("%d",queue[*f]);
+    if( *r == *f){
+        *f = 0;
+        *r = 0;
+    }
+    else
+    {
+        (*f)++;
+        printf("Dequeue successfully....\n\n");
+    }
+    return;
+}
+
+void traversal(){
+    if(*f == 0){
+        printf("Queue is empty...\n");
+        return;
+    }
+     printf("The Elements are:");
+    for(int i = *f ; i <= *r; i++ ){
+        printf("%d\t",queue[i]);
+    }
+    printf("\n"); // Added newline character for better output formatting
+}
+
+

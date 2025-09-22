@@ -1,0 +1,15 @@
+15:12:52 **** Build of configuration Debug for project p11 ****
+make all 
+Building file: ../p11.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"p11.d" -MT"p11.o" -o "p11.o" "../p11.c"
+Finished building: ../p11.c
+ 
+Building target: p11
+Invoking: GCC C Linker
+gcc  -o "p11"  ./p11.o   
+Finished building target: p11
+ 
+
+15:12:52 Build Finished. 0 errors, 0 warnings. (took 212ms)
+

@@ -1,0 +1,86 @@
+/*
+ * p5.c
+ *
+ *  Created on: 11-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *left;
+	struct node *right;
+}*first=NULL,*last=NULL,*nn=NULL,*temp,*curr,*prev;
+int value;
+void create();
+void display();
+void ins_first();
+void ins_pos_no();
+void ins_last();
+void del_first();
+void del_last();
+void del_pos_no();
+int main()
+{
+	create();
+	return 0;
+}
+void create()
+{
+	int value;
+	printf("Enter the value and -1 for end\n");
+	scanf("%d",&value);
+	while(value!=-1)
+	{
+		nn=(struct node *) malloc (sizeof(struct node));
+		nn->data=value;
+		nn->left=NULL;
+		nn->right=NULL;
+
+		if(first==NULL)
+		{
+			first=nn;
+			last=nn;
+		}
+		else
+		{
+			last->right=nn;
+			nn->left=last;
+			last=nn;
+		}
+		printf("Enter the value and -1 for end\n");
+		scanf("%d",&value);
+	}
+}
+
+
+void ins_first()
+{
+printf("Enter the value:\n");
+scanf("%d",&value);
+nn=(struct node *) malloc (sizeof(struct node));
+	nn->data=value;
+	nn->left=NULL;
+	nn->right=NULL;
+
+	//connect the nodes
+	nn->right=first;
+	first->left=nn;
+	first=nn;
+}
+void ins_last()
+{
+	int value;
+		printf("Enter the value\n");
+		scanf("%d",&value);
+			nn=(struct node *) malloc (sizeof(struct node));
+			nn->data=value;
+			nn->right=NULL;
+
+			last->right=nn;
+			nn->left=last;
+			last=nn;
+
+
+}

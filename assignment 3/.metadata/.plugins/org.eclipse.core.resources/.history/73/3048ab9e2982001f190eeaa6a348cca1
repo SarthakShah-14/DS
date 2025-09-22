@@ -1,0 +1,287 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next;
+}*first=NULL,*last=NULL,*tmp=NULL,*curr=NULL;
+
+int isempty()
+{
+return first==NULL;
+}
+void insertfirst()
+{
+tmp=(struct node *)malloc(sizeof(struct node));
+
+printf("enter data");
+scanf("%d",&tmp->data);
+
+if(isempty())
+{
+first=last=tmp;
+}
+else
+{
+tmp->next=first;
+first=tmp;
+}
+last->next=first;
+}
+void insertlast()
+{
+tmp=(struct node *)malloc(sizeof(struct node));
+
+printf("enter data");
+scanf("%d",&tmp->data);
+tmp=tmp->next;
+if(isempty())
+{
+first=last=tmp;
+}
+else
+{
+last->next=tmp;
+last=tmp;
+}
+last->next=first;
+}
+void insertafter()
+{
+if(isempty())
+{
+printf("\n linked list is empty");
+return;
+}
+else
+{
+int index,cnt=1;
+printf("enter index after when you want to add:");
+scanf("%d",&index);
+
+curr=first;
+while(curr->next!=NULL && cnt<index)
+{
+curr=curr->next;
+cnt++;
+}
+if(cnt==index)
+{
+tmp=(struct node*)malloc(sizeof (struct node));
+printf("enter data:");
+scanf("%d",&tmp->data);
+
+tmp->next=curr->next;
+curr->next=tmp;
+if(curr==last)
+{
+last=tmp;
+}
+printf("\n %d node is succesfully inserted after %d index.",tmp->data,index);
+}
+else
+{
+printf("index is not found\n");
+}
+}
+
+}
+
+void deletefirst()
+{
+if(isempty())
+{
+printf("linked list is empty");
+return ;
+}
+else
+{
+tmp=first;
+printf("%d node is deleted",tmp->data);
+
+if(first==last)
+{
+first=last=NULL;
+}
+else
+{
+first=first->next;
+}
+last->next=first;
+free(tmp);
+}
+}
+void deletelast()
+{
+
+
+tmp=last;
+printf("%d node is deleted",tmp->data);
+
+if(first==last)
+{
+first=last=NULL;
+}
+else
+{
+curr=first;
+while(curr->next!=last)
+{
+curr=curr->next;
+}
+last=curr;
+last->next=first;
+free(tmp);
+}
+}
+void deleteparticular()
+{
+if(isempty())
+{
+printf("linked list is empty");
+return ;
+}
+else
+{
+int index,cnt=1;
+tmp=first;
+while(tmp->next!=first && cnt<index)
+{
+tmp=tmp->next;
+cnt++;
+curr=first;
+}
+if(cnt==index)
+{
+printf("enter index you want to delete");
+scanf("%d",&index);
+if(first==last)
+{
+first=last=NULL;
+}
+last->next=first;
+
+if(tmp==first)
+{
+first=first->next;
+}
+last->next=first;
+
+if(tmp==last)
+{
+curr=first;
+while(curr->next!=last)
+{
+curr=curr->next;
+
+}
+last->next=first;
+}
+else
+{
+curr->next=tmp->next;
+}
+free(tmp);
+}
+else
+printf("index not found");
+}
+}
+void traversefirst()
+{
+if(isempty())
+{
+printf("linked list is empty");
+return ;
+}
+else
+{
+curr=first;
+do{
+
+printf("\t%d",curr->data);
+curr=curr->next;
+
+}while(curr!=first);
+}
+}
+void traverselast()
+{
+if(isempty())
+{
+printf("linked list is empty");
+return ;
+}
+else
+{
+curr=last;
+do{
+
+printf("\t%d",curr->data);
+curr=curr->next;
+
+}while(curr!=last);
+}
+}
+int main()
+{
+int choice;
+do{
+printf("\n*** Linked list menu***");
+printf("\n 1.insert first");
+printf("\n 2.insert last");
+printf("\n 3.insert after");
+   printf("\n 4.delete first");
+printf("\n 5.delete last");
+printf("\n 6.delete particular");
+printf("\n 7.traverse first");
+printf("\n 8.travserse last");
+printf("\n 9.exit");
+
+printf("\n enter your choice:");
+scanf("%d",&choice);
+
+switch(choice)
+{
+   case 1:
+insertfirst();
+break;
+
+case 2:
+insertlast();
+break;
+
+case 3:
+insertafter();
+break;
+
+case 4:
+deletefirst();
+break;
+
+case 5:
+deletelast();
+break;
+
+case 6:
+deleteparticular();
+break;
+
+case 7:
+traversefirst();
+break;
+
+case 8:
+traverselast();
+break;
+case 9:
+return 0;
+break;
+
+
+default:
+printf("\n invalid choice");
+break;
+}
+}while(choice!=11);
+return 0;
+}

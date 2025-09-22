@@ -1,0 +1,91 @@
+/*
+ * circularqueue.c
+ *
+ *  Created on: 24-Aug-2024
+ *      Author: root
+ */
+/*
+ * p10.c
+ *
+ *  Created on: 27-Jul-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+#define max 5
+int queue_arr[max];
+int f=0,r=0;
+void insert();
+void delete();
+int main()
+{
+	int choice;
+	do
+	{
+		printf("\nPlease enter\n1 for insert\n2 for pop\n3 for peep\n4 for display from top\n5 for display from bottom\n6 for exit\n");
+		printf("Enter choice");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+		case 1:
+			//printf("\n\n");
+			insert();
+			break;
+		case 2:
+			//printf("\n\n");
+			delete();
+			break;
+		case 3:
+			//printf("\n\n");
+			peep();
+			break;
+		case 4:
+			//printf("\n\n");
+			displayfromtop();
+			break;
+		case 5:
+			//printf("\n\n");
+			displayfrombottom();
+			break;
+		case 6:
+			printf("Code Exiting...");
+			return 1;
+		default:printf("Enter valid input\n");
+		break;
+		}
+	}
+	while(1);
+
+	return 0;
+}
+void insert()
+{
+	int value;
+	if(f==1||f-r==1)
+	{
+		printf("Queue will be overflowed");
+	}
+	printf("Enter the value ");
+	scanf("%d",&value);
+	if(r==max)
+	{
+		r=1;
+		queue_arr[r]=value;
+	}
+	else
+	{
+		r=r+1;
+		queue_arr[r]=value;
+	}
+	if(r==1)
+	{
+		f=1;
+	}
+
+}
+void delete()
+{
+
+}
+
+

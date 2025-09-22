@@ -1,0 +1,6 @@
+13:51:51 **** Incremental Build of configuration Debug for project p3 ****
+make all 
+make: Nothing to be done for 'all'.
+
+13:51:52 Build Finished. 0 errors, 0 warnings. (took 164ms)
+

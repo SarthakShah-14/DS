@@ -1,0 +1,15 @@
+13:28:45 **** Incremental Build of configuration Debug for project p2 ****
+make all 
+Building file: ../p2.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"p2.d" -MT"p2.o" -o "p2.o" "../p2.c"
+Finished building: ../p2.c
+ 
+Building target: p2
+Invoking: GCC C Linker
+gcc  -o "p2"  ./p2.o   
+Finished building target: p2
+ 
+
+13:28:46 Build Finished. 0 errors, 0 warnings. (took 519ms)
+

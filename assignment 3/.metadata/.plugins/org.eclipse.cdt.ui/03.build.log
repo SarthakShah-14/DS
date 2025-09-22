@@ -1,0 +1,15 @@
+13:15:48 **** Incremental Build of configuration Debug for project 03 ****
+make all 
+Building file: ../3.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"3.d" -MT"3.o" -o "3.o" "../3.c"
+Finished building: ../3.c
+ 
+Building target: 03
+Invoking: GCC C Linker
+gcc  -o "03"  ./3.o   
+Finished building target: 03
+ 
+
+13:15:48 Build Finished. 0 errors, 0 warnings. (took 213ms)
+

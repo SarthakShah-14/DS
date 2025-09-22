@@ -1,0 +1,145 @@
+/*
+ * circularqueue.c
+ *
+ *  Created on: 24-Aug-2024
+ *      Author: root
+ */
+/*
+ * p10.c
+ *
+ *  Created on: 27-Jul-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+#define max 5
+int queue_arr[max];
+int f=0,r=0;
+void insert();
+void delete();
+void display();
+int check();
+int main()
+{
+	int choice;
+	do
+	{
+		printf("\nPlease enter\n1 for insert\n2 for delete\n3 for display\n4 for exit\n");
+		printf("Enter choice");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+		case 1:
+			//printf("\n\n");
+			if(check()==1)
+			{
+			insert();
+			}
+			else
+			{
+				printf("Queue is empty");
+			}
+			break;
+		case 2:
+			//printf("\n\n");
+			delete();
+			break;
+		case 3:
+			//printf("\n\n");
+			display();
+			break;
+
+		case 4:
+			printf("Code Exiting...");
+			return 1;
+		default:printf("Enter valid input\n");
+		break;
+		}
+	}
+	while(1);
+
+	return 0;
+}
+void insert()
+{
+	int value;
+	if((f==1&&r==max)||(f-r==1))
+	{
+		printf("Queue will be overflowed\n");
+	}
+	printf("Enter the value\n");
+	scanf("%d",&value);
+	if(r==max)
+	{
+		r=1;
+		queue_arr[r]=value;
+	}
+	else
+	{
+		r=r+1;
+		queue_arr[r]=value;
+	}
+	if(r==1)
+	{
+		f=1;
+	}
+
+}
+void delete()
+{
+if(f==0)
+{
+	printf("Queue is empty");
+}
+else if(f==max)
+{
+	printf("%d",queue_arr[f]);
+	f=1;
+}
+else
+{
+	printf("%d",queue_arr[f]);
+
+}
+}
+void display()
+{
+	if(f==0)
+	{
+		printf("Queue is empty");
+	}
+	if(f>r)
+	{
+		for(int i=f;i>=max;i++)
+		{
+			printf("%d",queue_arr[i]);
+		}
+		for(int j=1;j>=r;j++)
+		{
+			printf("%d",queue_arr[j]);
+
+		}
+	}
+	else
+	{
+		for(int i=f;i>=r;i++)
+		{
+			printf("%d",queue_arr[i]);
+
+		}
+	}
+
+}
+int check()
+{
+	if(f==0)
+		{
+			return 0;
+		}
+	else
+	{
+		return 1;
+	}
+}
+
+

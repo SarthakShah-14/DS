@@ -1,0 +1,47 @@
+/*
+ * 6.c
+ *
+ *  Created on: 07-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+
+struct Node
+{
+	int rno;
+	char name[10];
+	int sem;
+	int sub1;
+	int sub2;
+	int sub3;
+	int total;
+
+	struct node *next;
+}*first=NULL,*last=NULL,*curr=NULL,*tmp=NULL;
+
+int isempty()
+{
+	return first==NULL;
+}
+
+void insertfirst()
+{
+    tmp=(struct node*)malloc(sizeof(struct node));
+	printf("enter data:");
+    scanf("%d",&tmp->data);
+	tmp->next=first;
+	if(isempty())
+	{
+		first =last=tmp;
+	}
+	else
+	{
+		first=tmp;
+	}
+
+}
+
+int main()
+{
+	return 0;
+}

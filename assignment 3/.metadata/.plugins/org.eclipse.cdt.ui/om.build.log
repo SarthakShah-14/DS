@@ -1,0 +1,23 @@
+14:51:33 **** Build of configuration Debug for project om ****
+make all 
+Building file: ../om.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"om.d" -MT"om.o" -o "om.o" "../om.c"
+../om.c: In function ‘deleteparticular’:
+../om.c:235:5: warning: ‘main’ is normally a non-static function [-Wmain]
+  235 | int main()
+      |     ^~~~
+../om.c:299:1: error: expected declaration or statement at end of input
+  299 | }
+      | ^
+../om.c: In function ‘insertlast’:
+../om.c:299:1: error: expected declaration or statement at end of input
+At top level:
+../om.c:235:5: warning: ‘main’ defined but not used [-Wunused-function]
+  235 | int main()
+      |     ^~~~
+make: *** [subdir.mk:20: om.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+14:51:34 Build Failed. 3 errors, 2 warnings. (took 266ms)
+

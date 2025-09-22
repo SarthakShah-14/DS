@@ -1,0 +1,1 @@
+infixtopostfix.o: ../infixtopostfix.c

@@ -1,0 +1,16 @@
+/*
+ * 6.c
+ *
+ *  Created on: 07-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+struct Node
+{
+	int data;
+	struct node *next;
+}*first=NULL,*last=NULL,*curr=NULL,*tmp=NULL;
+int main()
+{
+	return 0;
+}

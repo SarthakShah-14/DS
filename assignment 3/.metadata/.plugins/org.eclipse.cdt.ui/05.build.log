@@ -1,0 +1,15 @@
+13:48:42 **** Incremental Build of configuration Debug for project 05 ****
+make all 
+Building file: ../5.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"5.d" -MT"5.o" -o "5.o" "../5.c"
+Finished building: ../5.c
+ 
+Building target: 05
+Invoking: GCC C Linker
+gcc  -o "05"  ./5.o   
+Finished building target: 05
+ 
+
+13:48:42 Build Finished. 0 errors, 0 warnings. (took 215ms)
+

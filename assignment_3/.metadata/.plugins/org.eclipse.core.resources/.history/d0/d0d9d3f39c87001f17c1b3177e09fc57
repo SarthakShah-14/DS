@@ -1,0 +1,80 @@
+/*
+ * p5.c
+ *
+ *  Created on: 11-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *left;
+	struct node *right;
+}*first=NULL,*last=NULL,*nn=NULL,*temp,*curr,*prev;
+void create();
+int main()
+{
+	create();
+	return 0;
+}
+void create()
+{
+	int value;
+	printf("Enter the value and -1 for end\n");
+	scanf("%d",&value);
+	while(value!=-1)
+	{
+		nn=(struct node *) malloc (sizeof(struct node));
+		nn->data=value;
+		nn->left=NULL;
+		nn->right=NULL;
+
+		if(first==NULL)
+		{
+			first=nn;
+			last=nn;
+		}
+		else
+		{
+			last->right=nn;
+			nn->left=last;
+			last=nn;
+		}
+		printf("Enter the value and -1 for end\n");
+		scanf("%d",&value);
+	}
+}
+
+
+void sort1()
+{
+    // display(); // Uncomment if you want to display before sorting
+    int temp1;
+
+    if (first == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+
+    // Implementing Bubble Sort
+    int swapped;
+    do {
+        swapped = 0;
+        curr = first;
+
+        while (curr != NULL && curr->next != NULL) {
+            if (curr->data > curr->next->data) {
+                // Swap data
+                temp1 = curr->data;
+                curr->data = curr->next->data;
+                curr->next->data = temp1;
+
+                swapped = 1; // Set swapped to true, we made a swap
+            }
+            curr = curr->next;
+        }
+    } while (swapped); // Continue if a swap was made
+
+    display(); // Display the sorted list
+}

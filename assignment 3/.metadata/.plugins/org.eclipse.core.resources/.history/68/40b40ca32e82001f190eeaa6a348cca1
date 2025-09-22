@@ -1,0 +1,282 @@
+/*
+ * 3.c
+ * queue with linked list
+
+ *  Created on: 04-Oct-2024
+ *      Author: root
+ */
+/*
+ * singly.c
+ *
+ *  Created on: 03-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	int data;
+	struct node *next;
+}*first=NULL,*last=NULL,*curr=NULL,*tmp=NULL;
+
+int isempty()
+{
+	return first==NULL;
+}
+void insertfirst()
+{
+    tmp=(struct node*)malloc(sizeof(struct node));
+	printf("enter data:");
+    scanf("%d",&tmp->data);
+	tmp->next=first;
+	if(isempty())
+	{
+		first =last=tmp;
+	}
+	else
+	{
+		first=tmp;
+	}
+
+}
+
+void insertlast()
+{
+	tmp=(struct node*)malloc(sizeof (struct node));
+	printf("enter data:");
+	scanf("%d",&tmp->data);
+
+	last->next=NULL;
+	if(isempty())
+	{
+		first=last=tmp;
+	}
+	else
+	{
+		last->next=tmp;
+		last=tmp;
+	}
+
+}
+
+void insertafter()
+{
+	if(isempty())
+	{
+		printf("\n linked list is empty");
+		return;
+	}
+	else
+	{
+		int index,cnt=1;
+		printf("enter index after when you want to add:");
+		scanf("%d",&index);
+
+		curr=first;
+		while(curr->next!=NULL && cnt<index)
+		{
+			curr=curr->next;
+			cnt++;
+		}
+		if(cnt==index)
+		{
+			tmp=(struct node*)malloc(sizeof (struct node));
+			printf("enter data:");
+			scanf("%d",&tmp->data);
+
+			tmp->next=curr->next;
+			curr->next=tmp;
+		if(curr==last)
+		{
+			last=tmp;
+		}
+		printf("\n %d node is succesfully inserted after %d index.",tmp->data,index);
+		}
+		else
+		{
+			printf("index is not found\n");
+		}
+	}
+ return;
+}
+void traversal()
+{
+	if(isempty())
+	{
+	printf("\n linked list is empty");
+	return;
+	}
+	else
+	{
+	curr=first;
+	while(curr!=NULL)
+	{
+	printf("\t%d",curr->data);
+	curr=curr->next;
+	}
+	}
+}
+void deletefirst()
+	{
+	if(isempty())
+	{
+		printf("\n linked list is empty");
+		return;
+	}
+	else
+	{
+		tmp=first;
+		printf("%d node is deleted",tmp->data);
+		if(first==last)
+		{
+			first=last=NULL;
+		}
+		else
+		{
+			first=first->next;
+		}
+		free(tmp);
+	}
+}
+void deletelast()
+{
+	if(isempty())
+	{
+	printf("\n linked list is empty");
+	return;
+	}
+	else
+	{
+		tmp=last;
+		printf("%d node is deleted",tmp->data);
+		if(first==last)
+		{
+			first=last=NULL;
+		}
+		else
+		{
+			curr=first;
+			while(curr->next!=last)
+			{
+				curr=curr->next;
+			}
+			curr->next=NULL;
+			last=curr;
+		}
+		free(tmp);
+	}
+}
+void deleteparticular()
+{
+	if(isempty())
+	{
+		printf("\n linked list is empty");
+		return;
+	}
+	else
+	{
+		int index,cnt=1;
+		printf("enter index after when you want to delete:");
+		scanf("%d",&index);
+		tmp=first;
+
+		while(tmp->next!=NULL && cnt<index)
+		{
+			cnt++;
+			curr=tmp;
+			tmp=tmp->next;
+			last->next=first;		}
+	if(cnt==index)
+	{
+		printf("%d node is deleted",tmp->data);
+		if(first==last)
+		{
+			first=last=NULL;
+		}
+
+
+		if(tmp==first)
+		{
+			first=first->next;
+		}
+		if(tmp==last)
+		{
+			curr->next=NULL;
+			last=curr;
+		}
+		else
+		{
+			curr->next=tmp->next;
+		}
+		free(tmp);
+		}
+		else
+		{
+			printf("index not found");
+		}
+
+
+	}
+}
+int main()
+{
+	int ch;
+	do{
+
+		printf("\n------------------MENU-------------------------------");
+					printf("\n1. Enter 1 to enqueue element");
+					printf("\n2. Enter 2 to dequeue element");
+					printf("\n3. Enter 3 to display element ");
+					printf("\n4. Enter 4 to display front element ");
+					printf("\n5. Enter 5 to display rear element ");
+					printf("\n6. Enter 6 to exit ");
+					scanf("%d" ,&ch);
+
+	switch(ch)
+	{
+		   case 1:
+		insertfirst();
+		break;
+
+		case 2:
+		insertlast();
+		break;
+
+		case 3:
+		insertafter();
+		break;
+
+		case 4:
+		deletefirst();
+		break;
+
+		case 5:
+		deletelast();
+		break;
+
+		case 6:
+		deleteparticular();
+		break;
+
+		case 7:
+		traversal();
+		break;
+
+		case 8:
+		return 0;
+
+		default:
+		printf("\n invalid choice");
+		break;
+	}
+	}
+	while(ch!=11);
+	return 0;
+}
+
+
+
+
+
+
+

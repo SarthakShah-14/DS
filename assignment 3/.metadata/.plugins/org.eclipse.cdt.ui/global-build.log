@@ -1,0 +1,54 @@
+14:13:09 **** Incremental Build of configuration Debug for project 06 ****
+make all 
+Building file: ../6.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"6.d" -MT"6.o" -o "6.o" "../6.c"
+../6.c: In function ‘insertfirst’:
+../6.c:29:23: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   29 |     tmp=(struct node*)malloc(sizeof(struct node));
+      |                       ^~~~~~
+../6.c:29:23: warning: incompatible implicit declaration of built-in function ‘malloc’
+../6.c:8:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+    7 | #include<stdio.h>
+  +++ |+#include <stdlib.h>
+    8 | 
+../6.c: In function ‘insertlast’:
+../6.c:55:20: warning: incompatible implicit declaration of built-in function ‘malloc’
+   55 |  tmp=(struct node*)malloc(sizeof (struct node));
+      |                    ^~~~~~
+../6.c:55:20: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+../6.c: In function ‘insertafter’:
+../6.c:102:22: warning: incompatible implicit declaration of built-in function ‘malloc’
+  102 |    tmp=(struct node*)malloc(sizeof (struct node));
+      |                      ^~~~~~
+../6.c:102:22: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+../6.c: In function ‘traversal’:
+../6.c:136:10: warning: unknown escape sequence: '\T'
+  136 |   printf("\nRNO\tNAME\tSEm\tMARK1\tMARK2\tMArk3\TOTAl");
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../6.c: In function ‘deletefirst’:
+../6.c:163:3: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+  163 |   free(tmp);
+      |   ^~~~
+../6.c:163:3: warning: incompatible implicit declaration of built-in function ‘free’
+../6.c:163:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+../6.c: In function ‘deletelast’:
+../6.c:191:3: warning: incompatible implicit declaration of built-in function ‘free’
+  191 |   free(tmp);
+      |   ^~~~
+../6.c:191:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+../6.c: In function ‘deleteparticular’:
+../6.c:234:4: warning: incompatible implicit declaration of built-in function ‘free’
+  234 |    free(tmp);
+      |    ^~~~
+../6.c:234:4: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+Finished building: ../6.c
+ 
+Building target: 06
+Invoking: GCC C Linker
+gcc  -o "06"  ./6.o   
+Finished building target: 06
+ 
+14:13:12 **** Incremental Build of configuration Debug for project 06 ****
+make all 
+make: Nothing to be done for 'all'.

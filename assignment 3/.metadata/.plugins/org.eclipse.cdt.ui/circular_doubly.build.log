@@ -1,0 +1,15 @@
+14:31:21 **** Incremental Build of configuration Debug for project circular_doubly ****
+make all 
+Building file: ../circular_doubly.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"circular_doubly.d" -MT"circular_doubly.o" -o "circular_doubly.o" "../circular_doubly.c"
+Finished building: ../circular_doubly.c
+ 
+Building target: circular_doubly
+Invoking: GCC C Linker
+gcc  -o "circular_doubly"  ./circular_doubly.o   
+Finished building target: circular_doubly
+ 
+
+14:31:21 Build Finished. 0 errors, 0 warnings. (took 215ms)
+

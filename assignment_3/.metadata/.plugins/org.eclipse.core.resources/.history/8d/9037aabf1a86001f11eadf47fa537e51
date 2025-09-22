@@ -1,0 +1,247 @@
+/*
+ * p1.c
+ *
+ *  Created on: 07-Oct-2024
+ *      Author: root
+ */
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+}*first=NULL,*last=NULL,*nn=NULL,*temp,*curr,*prev;
+int choice,value,c;
+void create();
+void display();
+void ins_first();
+void ins_pos_no();
+void ins_last();
+void del_first();
+void del_last();
+void del_pos_no();
+void sort();
+int main()
+{
+	create();
+	do
+	{
+		printf("----------------------------------------------------------------------\n");
+		printf("Enter 1 for Insert at first\n");
+		printf("Enter 2 for Insert at last\n");
+		printf("Enter 3 for Insert at Position No\n");
+		printf("Enter 4 for Delete  first\n");
+		printf("Enter 5 for Delete  last\n");
+		printf("Enter 6 for Delete by Position No\n");
+		printf("Enter 7 for display\n");
+		printf("Enter 8 for Exit\n");
+		printf("----------------------------------------------------------------------\n");
+
+		printf("Enter choice\n");
+		scanf("%d",&choice);
+		switch(choice)
+		{
+		case 1:
+			ins_first();
+			break;
+		case 2:
+			ins_last();
+			break;
+		case 3:
+			ins_pos_no();
+			break;
+		case 4:
+			del_first();
+			break;
+		case 5:
+			del_last();
+			break;
+		case 6:
+			del_pos_no();
+			break;
+		case 7:
+			display();
+			break;
+		case 8:
+			printf("Code Exited");
+			return 1;
+		}
+	}while(1);
+	return 0;
+}
+void create()
+{
+	int value;
+	printf("Enter the value and -1 for end\n");
+	scanf("%d",&value);
+	while(value!=-1)
+	{
+		nn=(struct node *) malloc (sizeof(struct node));
+		nn->data=value;
+		nn->next=NULL;
+		if(first==NULL)
+		{
+			first=nn;
+			last=nn;
+		}
+		else
+		{
+			last->next=nn;
+			last=nn;
+		}
+		printf("Enter the value and -1 for end\n");
+		scanf("%d",&value);
+	}
+}
+void display()
+		 {
+		temp=first;
+		while(temp!=NULL)
+		{
+			printf("Linked List element:%d\n",temp->data);
+			temp=temp->next;
+		}
+		 }
+void ins_first()
+{
+	printf("Enter the value:\n");
+	scanf("%d",&value);
+	nn=(struct node *) malloc (sizeof(struct node));
+			nn->data=value;
+			nn->next=first;
+			first=nn;
+}
+void ins_pos_no()
+{
+	int count,pos;
+	printf("Enter the position\n");
+	scanf("%d",&pos);
+	if(pos>=1&&pos<=last)
+	{
+	count=1;
+	printf("Enter the value\n");
+	scanf("%d",&value);
+	nn=(struct node *) malloc (sizeof(struct node));
+			nn->data=value;
+			nn->next=NULL;
+			prev=NULL;
+			curr=first;
+			while(count<pos)
+			{
+				prev=curr;
+				curr=curr->next;
+				count++;
+			}
+			prev->next=nn;
+			nn->next=curr;
+	}
+	else
+	{
+		printf("Enter valid position\n");
+	}
+}
+void ins_last()
+{
+	int value;
+		printf("Enter the value\n");
+		scanf("%d",&value);
+			nn=(struct node *) malloc (sizeof(struct node));
+			nn->data=value;
+			nn->next=NULL;
+
+			last->next=nn;
+			last=nn;
+
+			//printf("%d",last->next);
+
+}
+void del_first()
+	{
+
+		if(first==NULL)
+		{
+			printf("List is empty\n");
+		}
+		else
+		{
+			printf("deleted element is:%d\n",first->data);
+			temp=first;
+			first=first->next;
+			free(temp);
+		}
+	}
+void del_last()
+	{
+		if(first==NULL)
+		{
+			printf("List is Empty\n");
+		}
+		else
+		{
+			printf("Deleted Element is:%d\n",last->data);
+			temp=first;
+			while(temp->next!=last)
+			{
+				temp=temp->next;
+			}
+			free(last);
+			last=temp;
+			last->next=NULL;
+		}
+	}
+void del_pos_no()
+	{
+		int count=1,pos;
+		printf("Enter the position no\n");
+		scanf("%d",&pos);
+		if(pos>=1&&pos<=last)
+		{
+		prev=NULL;
+		while(count<pos)
+					{
+						prev=curr;
+						curr=curr->next;
+						count++;
+						prev->next=nn;
+						nn->next=curr;
+					}
+		printf("\nDeleted element is:%d\n",curr->data);
+		if(curr==last)
+		{
+			free(last);
+			last=prev;
+			last->next=NULL;
+		}
+		else
+		{
+			prev->next=curr->next;
+			free(curr);
+		}
+		}
+		else
+			{
+				printf("Enter valid position\n");
+			}
+
+	}
+
+void sort()
+{
+	if(first==NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
+	else
+	{
+		for(curr=first,temp=NULL;curr!=NULL;curr=curr->next)
+		{
+			if(curr->data<curr->next->data)
+			{
+				temp->data=curr->data;
+				curr->data=curr->next->data;
+				curr->next->data=temp->data;
+			}
+		}
+	}
+	display();
+}
